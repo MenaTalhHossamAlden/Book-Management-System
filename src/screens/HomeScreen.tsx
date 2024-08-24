@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import SearchBar from '../components/SearchBar';
 import useSearch from '../hooks/useSearch';
-
+import BookItem from '../components/BookItem';
 const HomeScreen = () => {
   const [query, setQuery] = useState('');
 
