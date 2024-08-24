@@ -18,7 +18,9 @@ const BookItem = (props: IBook) => {
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.authors}>{authors?.join(', ')}</Text>
         <Text style={styles.pages}>{pageCount} page</Text>
-        <Text style={styles.description}>{description}</Text>
+        <Text style={styles.description} numberOfLines={5}>
+          {description}  
+        </Text>
       </View>
     </View>
   );
