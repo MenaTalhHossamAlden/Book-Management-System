@@ -6,14 +6,16 @@ import {Icon} from 'react-native-vector-icons/Entypo';
 
 const TickIcon = () => <Icon name="check" color="#4ecdc4" size={20} />;
 
+export const BOOK_SHELVES = [
+  {label: 'Want to Read', value: BookShelves.wantToRead},
+  {label: 'Read', value: BookShelves.Read},
+  {label: 'Currently Reading', value: BookShelves.CurrentlyReading},
+];
+
 const SelectBookShelf = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    {label: 'Want to Read', value: BookShelves.wantToRead},
-    {label: 'Read', value: BookShelves.Read},
-    {label: 'Currently Reading', value: BookShelves.CurrentlyReading},
-  ]);
+  const [items, setItems] = useState(BOOK_SHELVES);
 
   return (
     <DropDownPicker
