@@ -9,8 +9,6 @@ const HomeScreen = () => {
 
   const {data, refetch} = useSearch(query);
 
-  console.log(data);
-
   return (
     <View style={styles.container}>
       <SearchBar value={query} setValue={setQuery} onPress={refetch} />
