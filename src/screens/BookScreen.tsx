@@ -17,6 +17,7 @@ import moment from 'moment';
 import Icon from 'react-native-vector-icons/Feather';
 import RenderHtml from 'react-native-render-html';
 import {StackParamList} from '../types';
+import SelectBookShelf from '../components/SelectBookShelf';
 
 type BookScreenRouteProp = RouteProp<StackParamList, 'Book'>;
 
@@ -38,7 +39,10 @@ const BookScreen = () => {
         padding: 15,
         gap: 15,
       }}>
-      <GoBack />
+      <View style={styles.header}>
+        <GoBack />
+        <SelectBookShelf />
+      </View>
       <BookItem {...data} isDescription={false} isPressable={false} />
       <View style={styles.categories}>
         {categories.map((category, index) => (
@@ -56,6 +60,7 @@ const BookScreen = () => {
         <Text style={styles.btnText}>view</Text>
         <Icon name="external-link" color="#4eced4" size={20} />
       </Pressable>
+
       <RenderHtml contentWidth={width} source={{html: description}} />
     </ScrollView>
   );
@@ -101,5 +106,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '500',
     textTransform: 'capitalize',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });

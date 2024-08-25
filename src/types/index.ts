@@ -9,5 +9,22 @@ export interface IBook {
       thumbnail: string;
     };
     pageCount: number;
+    categories: string[];
+    publisher: string;
+    publishedDate: string;
+    previewLink: string;
   };
+}
+
+export type StackParamList = {
+  Home: undefined;
+  Book: {
+    bookId: string;
+  };
+};
+
+export enum BookShelves {
+  wantToRead,
+  Read,
+  CurrentlyReading,
 }
