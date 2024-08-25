@@ -16,10 +16,13 @@ import BookItem from '../components/BookItem';
 import moment from 'moment';
 import Icon from 'react-native-vector-icons/Feather';
 import RenderHtml from 'react-native-render-html';
+import {StackParamList} from '../types';
+
+type BookScreenRouteProp = RouteProp<StackParamList, 'Book'>;
 
 const BookScreen = () => {
-  const route = useRoute();
-  const {bookId} = route?.params;
+  const route = useRoute<BookScreenRouteProp>();
+  const {bookId} = route.params;
   const {data, isFetching, error} = useBook(bookId);
   if (isFetching) return <ActivityIndicator color="#4ecdc4" />;
   if (error) return <Text>Error</Text>;
@@ -53,7 +56,7 @@ const BookScreen = () => {
         <Text style={styles.btnText}>view</Text>
         <Icon name="external-link" color="#4eced4" size={20} />
       </Pressable>
-      <RenderHtml contentWidth={width} source={{httml: description}} />
+      <RenderHtml contentWidth={width} source={{html: description}} />
     </ScrollView>
   );
 };

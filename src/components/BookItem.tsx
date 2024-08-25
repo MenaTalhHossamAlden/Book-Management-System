@@ -1,19 +1,22 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {Pressable, Text, Image, StyleSheet, View} from 'react-native';
-import {IBook} from '../types';
+import {IBook, StackParamList} from '../types';
 import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack'
 
 interface IBookItem extends IBook {
   isDescription?: boolean;
   isPressable?: boolean;
 }
 
+type BookScreenNavigationProp = StackNavigationProp<StackParamList, "Book">
+
 const BookItem = (props: IBookItem) => {
   const {id, volumeInfo, isDescription = true, isPressable = true} = props;
   const {imageLinks, title, authors, pageCount, description, averageRating} =
     volumeInfo;
-  const navigation = useNavigation();
+  const navigation = useNavigation<BookScreenNavigationProp>();
   return (
     <Pressable
       style={styles.container}

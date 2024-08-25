@@ -12,10 +12,11 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import BookScreen from './screens/BookScreen';
+import { StackParamList } from './types';
 
 const queryClient = new QueryClient();
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<StackParamList>();
 
 const App = () => {
   return (
