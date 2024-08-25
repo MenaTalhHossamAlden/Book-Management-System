@@ -1,7 +1,8 @@
 // main .tsx file rendered on the screen
 import React from 'react';
 import HomeScreen from './screens/HomeScreen';
-import {
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';import {
   useQuery,
   useMutation,
   useQueryClient,
@@ -11,10 +12,18 @@ import {
 
 const queryClient = new QueryClient();
 
+const Stack = createStackNavigator();
+
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <HomeScreen />
+      <NavigationContainer>
+      <Stack.Navigator screenOptions={{
+        headerShown: false
+      }}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
     </QueryClientProvider>
   );
 };
