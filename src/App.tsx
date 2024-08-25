@@ -2,6 +2,7 @@
 import React from 'react';
 import HomeScreen from './screens/HomeScreen';
 import BookScreen from './screens/BookScreen';
+import BookShelvesScreen from './screens/BookShelvesScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
@@ -12,7 +13,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import BookScreen from './screens/BookScreen';
-import { StackParamList } from './types';
+import {StackParamList} from './types';
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => {
           }}>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Book" component={BookScreen} />
+          <Stack.Screen name="BookShelves" component={BookShelvesScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </QueryClientProvider>

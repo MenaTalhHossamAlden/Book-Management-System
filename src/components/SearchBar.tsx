@@ -32,8 +32,8 @@ export default SearchBar;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    padding: 15,
     gap: 20,
+    flex: 1,
   },
   input: {
     backgroundColor: '#fff',
