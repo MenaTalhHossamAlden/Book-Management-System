@@ -18,6 +18,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import RenderHtml from 'react-native-render-html';
 import {StackParamList} from '../types';
 import SelectBookShelf from '../components/SelectBookShelf';
+import BookSummary from '../components/BookSummary';
 
 type BookScreenRouteProp = RouteProp<StackParamList, 'Book'>;
 
@@ -62,6 +63,10 @@ const BookScreen = () => {
       </Pressable>
 
       <RenderHtml contentWidth={width} source={{html: description}} />
+      <BookSummary
+        title={data?.volumeInfo.title}
+        authors={data?.volumeInfo.authors}
+      />
     </ScrollView>
   );
 };
