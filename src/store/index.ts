@@ -5,6 +5,7 @@ type Store = {
   books: IBookShelf[];
   addBook: (bookId: string, bookShelfId: BookShelves) => void;
   updateBook: (bookId: string, bookShelfId: BookShelves) => void;
+  removeBook: (bookId: string) => void;
 };
 
 const useBookShelves = create<Store>()(set => ({
@@ -22,6 +23,8 @@ const useBookShelves = create<Store>()(set => ({
         return book;
       }),
     })),
+  removeBook: bookId =>
+    set(state => ({books: state.books.filter(book => book.bookId !== bookId)})),
 }));
 
 export default useBookShelves;

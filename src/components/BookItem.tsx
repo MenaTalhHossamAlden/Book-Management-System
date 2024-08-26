@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 20,
     zIndex: -1,
+    flex: 1,
   },
   image: {
     width: 200,
