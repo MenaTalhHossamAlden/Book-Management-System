@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import {BookShelves} from '../types';
 import SegmentedButtons from '../components/SegmentedButtons';
 import {BOOK_SHELVES} from '../components/SelectBookShelf';
@@ -7,6 +7,7 @@ import {GoBack} from '../components/GoBack';
 
 const BookShelvesScreen = () => {
   const [selectedBookShelf, setSelectedBookShelf] = useState(BookShelves.Read);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
