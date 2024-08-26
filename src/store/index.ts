@@ -1,13 +1,15 @@
 import {create} from 'zustand';
+import {BookShelves, IBookShelf} from '../types';
 
 type Store = {
-  count: number;
-  inc: () => void;
+  books: IBookShelf[];
+  addBook: (bookId: string, bookShelfId: BookShelves) => void;
 };
 
-const useStore = create<Store>()(set => ({
-  count: 1,
-  inc: () => set(state => ({count: state.count + 1})),
+const useBookShelves = create<Store>()(set => ({
+  books: [],
+  addBook: (bookId, bookShelfId) =>
+    set(state => ({books: [...state.books, {bookId, bookShelfId}]})),
 }));
 
-export default useStore();
+export default useBookShelves;

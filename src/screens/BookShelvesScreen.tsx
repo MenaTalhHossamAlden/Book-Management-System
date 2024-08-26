@@ -1,15 +1,22 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, FlatList} from 'react-native';
 import {BookShelves} from '../types';
 import SegmentedButtons from '../components/SegmentedButtons';
 import {BOOK_SHELVES} from '../components/SelectBookShelf';
 import {GoBack} from '../components/GoBack';
+import useBook from '../hooks/useBook';
+import useBookShelves from '../store';
+import BookShelfItem from '../components/BookShelfItem';
+import Divider from '../components/Divider';
 
 const BookShelvesScreen = () => {
   const [selectedBookShelf, setSelectedBookShelf] = useState(BookShelves.Read);
 
+  const {books} = useBookShelves();
+
   return (
     <View style={styles.container}>
+      <Text>{JSON.stringify(books)}</Text>
       <View style={styles.header}>
         <GoBack />
         <SegmentedButtons
@@ -18,6 +25,16 @@ const BookShelvesScreen = () => {
           setValue={setSelectedBookShelf}
         />
       </View>
+      <FlatList
+        data={books}
+        renderItem={({item}) => <BookShelfItem {...item} />}
+        keyExtractor={item => item.bookId}
+        contentContainerStyle={{
+          padding: 15,
+          gap: 5,
+        }}
+        itemSeparatorComponent={Divider}
+      />
     </View>
   );
 };

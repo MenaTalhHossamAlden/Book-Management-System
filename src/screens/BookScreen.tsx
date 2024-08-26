@@ -41,8 +41,8 @@ const BookScreen = () => {
       }}>
       <View style={styles.header}>
         <GoBack />
-        <SelectBookShelf />
-      </View> 
+        <SelectBookShelf bookId={bookId} />
+      </View>
       <BookItem {...data} isDescription={false} isPressable={false} />
       <View style={styles.categories}>
         {categories.map((category, index) => (
