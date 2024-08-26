@@ -1,5 +1,5 @@
 // main .tsx file rendered on the screen
-import React from 'react';
+import React, {useEffect} from 'react';
 import HomeScreen from './screens/HomeScreen';
 import BookScreen from './screens/BookScreen';
 import BookShelvesScreen from './screens/BookShelvesScreen';
@@ -14,12 +14,15 @@ import {
 } from '@tanstack/react-query';
 import BookScreen from './screens/BookScreen';
 import {StackParamList} from './types';
+import useBookShelves from './store';
 
 const queryClient = new QueryClient();
 
 const Stack = createStackNavigator<StackParamList>();
 
 const App = () => {
+  const {loadFromLocalStorage} = useBookShelves();
+  useEffect(() => loadFromLocalStorage(), []);
   return (
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>

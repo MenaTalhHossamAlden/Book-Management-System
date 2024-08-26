@@ -11,6 +11,7 @@
     "windows": "react-native run-windows"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native-vector-icons/ionicons": "latest",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
