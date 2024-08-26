@@ -20,11 +20,13 @@ interface ISelectBookShelf {
 const SelectBookShelf = (props: ISelectBookShelf) => {
   const {bookId} = props;
 
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const [items, setItems] = useState(BOOK_SHELVES);
+  const {addBook, updateBook, books} = useBookShelves();
 
-  const {addBook} = useBookShelves();
+  const book = books.find(book => book.bookId === bookId);
+
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(book?.bookShelfId);
+  const [items, setItems] = useState(BOOK_SHELVES);
 
   return (
     <DropDownPicker
@@ -33,7 +35,11 @@ const SelectBookShelf = (props: ISelectBookShelf) => {
       items={items}
       setOpen={setOpen}
       setValue={setValue}
-      onChangeValue={bookShelfId => addBook(bookId, bookShelfId as BookShelves)}
+      onChangeValue={bookShelfId => {
+        book
+          ? updateBook(bookId, bookShelfId as BookShelves)
+          : addBook(bookId, bookShelfId as BookShelves);
+      }}
       setItems={setItems}
       listMode="SCROLLVIEW"
       placeholder="Select BookShelf"

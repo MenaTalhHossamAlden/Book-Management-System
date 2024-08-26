@@ -26,7 +26,7 @@ const BookShelvesScreen = () => {
         />
       </View>
       <FlatList
-        data={books}
+        data={books.filter(book => book.bookShelfId === selectedBookShelf)}
         renderItem={({item}) => <BookShelfItem {...item} />}
         keyExtractor={item => item.bookId}
         contentContainerStyle={{
