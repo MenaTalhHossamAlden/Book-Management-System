@@ -64,8 +64,8 @@ const BookScreen = () => {
 
       <RenderHtml contentWidth={width} source={{html: description}} />
       <BookSummary
-        title={data?.volumeInfo.title}
-        authors={data?.volumeInfo.authors}
+        title={data!.volumeInfo.title}
+        authors={data!.volumeInfo.authors}
       />
     </ScrollView>
   );

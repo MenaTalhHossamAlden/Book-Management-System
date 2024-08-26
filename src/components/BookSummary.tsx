@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, Pressable, StyleSheet} from 'react-native';
 import useAI from '../hooks/useAI';
+import RenderHTML from 'react-native-render-html';
 
 interface IBookSummary {
   title: string;
@@ -8,9 +9,25 @@ interface IBookSummary {
 }
 
 const BookSummary = (props: IBookSummary) => {
-  const {refetch} = useAI();
+  const {title, authors} = props;
+  const prompt = `Generate a detailed book summary of the book titled ${title} by ${authors.join(
+    ', ',
+  )}, use proper HTML tags to format the summary`;
+  const {width} = useWindowDimensions();
+  const {data, isFetching, error, refetch} = useAI(prompt);
+  if (isFetching) return <ActivityIndicator color="#4ecdc4" />;
+  if (error) return <Text>Error</Text>;
+  if (data)
+    return (
+      <RenderHTML
+        contentWidth={width}
+        source={{
+          html: data,
+        }}
+      />
+    );
   return (
-    <Pressable style={styles.btn} onPress={}>
+    <Pressable style={styles.btn} onPress={async () => await refetch()}>
       <Text style={styles.btnText}>AI Summary</Text>
     </Pressable>
   );
