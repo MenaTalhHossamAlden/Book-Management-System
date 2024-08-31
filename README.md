@@ -20,6 +20,32 @@
     - **Want to Read**
   - All bookshelves are stored in local storage to prevent data loss when reopening the app.
 
+### Key Features
+
+- **Search and Explore**:
+  - Search for books using the Google Books API.
+  - View detailed information about any book.
+
+- **Bookshelves Management**:
+  - Categorize books into "Read", "Currently Reading", and "Want to Read" shelves.
+  - Bookshelves are stored locally, ensuring data persistence across app sessions.
+
+- **AI-Powered Summaries**:
+  - Generate book summaries using an AI feature.
+
+- **State Management**:
+  - The app uses `zustand` for efficient and simple state management.
+
+- **Navigation**:
+  - `React Navigation` is used to manage multiple screens and facilitate smooth navigation between them.
+
+- **Data Fetching**:
+  - `TanStack Query` is used for data fetching and caching, ensuring efficient and reliable data management.
+
+- **TypeScript**:
+  - The app is developed using `TypeScript` for type safety and better code maintainability.
+
+
 ## Screenshots
 ![image](https://github.com/user-attachments/assets/50b03591-e863-49ca-a717-267f94897842)
 ![image](https://github.com/user-attachments/assets/fd4b54a8-2252-4493-b1cb-a0a24cab301f)
